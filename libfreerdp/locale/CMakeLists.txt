@@ -43,7 +43,7 @@ if(CMAKE_SYSTEM_NAME MATCHES Solaris)
   set(WITH_SUN true)
 endif()
 
-if(APPLE AND (NOT IOS))
+if(APPLE AND (NOT IOS) AND (NOT VISIONOS))
   list(APPEND SRCS ${APPLE_SRCS})
   find_library(CARBON Carbon)
   freerdp_library_add(${CARBON})

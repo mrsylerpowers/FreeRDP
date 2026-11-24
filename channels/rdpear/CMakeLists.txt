@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if(NOT IOS AND NOT WIN32 AND NOT ANDROID)
+if(NOT IOS AND NOT VISIONOS AND NOT WIN32 AND NOT ANDROID)
   find_package(KRB5)
 
   if(KRB5_FOUND)

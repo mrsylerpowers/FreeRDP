@@ -26,7 +26,7 @@ if((NOT WIN32) AND (NOT APPLE) AND (NOT ANDROID) AND (NOT OPENBSD))
 endif()
 
 # GetSystemPowerStatus() backend on macOS (not iOS: IOKit power sources are a desktop-only API)
-if(APPLE AND (NOT IOS))
+if(APPLE AND (NOT IOS) AND (NOT VISIONOS))
   find_library(IOKIT_LIBRARY IOKit REQUIRED)
   find_library(CORE_FOUNDATION_LIBRARY CoreFoundation REQUIRED)
   winpr_library_add_private(${IOKIT_LIBRARY} ${CORE_FOUNDATION_LIBRARY})

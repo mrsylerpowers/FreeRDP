@@ -221,7 +221,7 @@ static CAM_ERROR_CODE cam_avfoundation_stream_start(FreeRDPCameraAVFoundationStr
 	[stream.session commitConfiguration];
 
 #if (TARGET_OS_OSX && (__MAC_OS_X_VERSION_MAX_ALLOWED >= 140000)) || \
-    (!TARGET_OS_OSX && (__IPHONE_OS_VERSION_MAX_ALLOWED >= 170000))
+    (!TARGET_OS_OSX && !TARGET_OS_VISION && (__IPHONE_OS_VERSION_MAX_ALLOWED >= 170000))
 	if (@available(macOS 14.0, iOS 17.0, *))
 	{
 		AVCaptureConnection *connection = [stream.output connectionWithMediaType:AVMediaTypeVideo];
@@ -443,7 +443,7 @@ static UINT cam_avfoundation_enumerate(ICamHal *hal, ICamHalEnumCallback callbac
 #endif
 			[types addObject:cam_avfoundation_legacy_external_type()];
 #endif
-#else
+#elif !TARGET_OS_VISION
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 170000
 		if (@available(iOS 17.0, *))
 			[types addObject:AVCaptureDeviceTypeExternal];

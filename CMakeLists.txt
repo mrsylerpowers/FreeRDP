@@ -360,7 +360,7 @@ endif()
 
 if(APPLE)
   set(WAYLAND_FEATURE_TYPE "DISABLED")
-  if(IOS)
+  if(IOS OR VISIONOS)
     set(PCSC_FEATURE_TYPE "DISABLED")
   endif()
 endif()

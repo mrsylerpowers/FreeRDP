@@ -29,9 +29,9 @@ if(MSVC OR MINGW)
   winpr_library_add_public(pathcch)
 endif()
 
-if(IOS)
+if(IOS OR VISIONOS)
   winpr_module_add(shell_ios.m)
-endif(IOS)
+endif()
 
 if(BUILD_TESTING)
   add_subdirectory(test)

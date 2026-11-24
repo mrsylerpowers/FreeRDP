@@ -7,7 +7,7 @@ if(WIN32)
   set(OPTION_SERVER_DEFAULT OFF)
 else()
   # cups is available on mac os and linux by default, on android it is optional.
-  if(NOT IOS AND NOT ANDROID)
+  if(NOT IOS AND NOT VISIONOS AND NOT ANDROID)
     set(CUPS_DEFAULT ON)
   else()
     set(CUPS_DEFAULT OFF)

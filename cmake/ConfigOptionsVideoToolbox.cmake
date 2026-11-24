@@ -8,6 +8,9 @@ if(APPLE AND CMAKE_SYSTEM_NAME STREQUAL "Darwin")
 elseif(APPLE AND CMAKE_SYSTEM_NAME STREQUAL "iOS")
   set(_videotoolbox_platform_supported ON)
   set(_videotoolbox_minimum_version "8.0")
+elseif(APPLE AND CMAKE_SYSTEM_NAME STREQUAL "visionOS")
+  set(_videotoolbox_platform_supported ON)
+  set(_videotoolbox_minimum_version "1.0")
 endif()
 
 set(_videotoolbox_default ${_videotoolbox_platform_supported})
@@ -20,7 +23,7 @@ endif()
 option(WITH_APPLE_VIDEOTOOLBOX "Use Apple VideoToolbox directly for H.264" ${_videotoolbox_default})
 if(WITH_APPLE_VIDEOTOOLBOX)
   if(NOT _videotoolbox_platform_supported)
-    message(FATAL_ERROR "WITH_APPLE_VIDEOTOOLBOX requires a macOS or iOS target")
+    message(FATAL_ERROR "WITH_APPLE_VIDEOTOOLBOX requires a macOS, iOS or visionOS target")
   elseif(NOT _videotoolbox_default)
     message(
       FATAL_ERROR "WITH_APPLE_VIDEOTOOLBOX requires ${CMAKE_SYSTEM_NAME} ${_videotoolbox_minimum_version} or later"

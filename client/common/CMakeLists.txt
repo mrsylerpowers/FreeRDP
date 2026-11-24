@@ -73,7 +73,7 @@ if(WITH_FUSE)
   add_compile_definitions(_FILE_OFFSET_BITS=64)
 endif()
 
-cmake_dependent_option(WITH_CLIPRDR_FILE_APPLE "Pasteboard file support" ON "NOT WITH_FUSE;APPLE;NOT IOS" OFF)
+cmake_dependent_option(WITH_CLIPRDR_FILE_APPLE "Pasteboard file support" ON "NOT WITH_FUSE;APPLE;NOT IOS;NOT VISIONOS" OFF)
 if(WITH_CLIPRDR_FILE_APPLE)
   # Server files are offered and local files read on the pasteboard instead
   list(APPEND SRCS client_cliprdr_file_apple.h client_cliprdr_file_apple.m)
